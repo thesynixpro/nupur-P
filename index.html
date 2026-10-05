@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#214d3a">
+<meta name="description" content="Nupur — Tutor portfolio. Helping students learn with confidence and curiosity.">
+<title>Nupur | Tutor Portfolio</title>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root{--bg:#f8f4ea;--surface:#fffdf8;--green:#214d3a;--green2:#376d52;--gold:#c89b55;--text:#1f2b25;--muted:#66736c;--line:#e6e0d3;--shadow:0 18px 45px rgba(35,54,44,.09);--radius:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,textarea{font:inherit}
+.container{width:min(1120px,92%);margin:auto}
+.section{padding:100px 0}
+.section-heading{text-align:center;max-width:720px;margin:0 auto 50px}
+.section-label{text-transform:uppercase;letter-spacing:.16em;color:var(--gold);font-size:.76rem;font-weight:800;margin-bottom:8px}
+.section-title{font-family:Georgia,serif;font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.12;color:var(--green)}
+.section-title span{color:var(--gold)}
+.section-description{color:var(--muted);margin-top:16px}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(248,244,234,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(230,224,211,.75)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+.logo{font:700 1.55rem Georgia,serif;color:var(--green)}
+.logo-dot{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:27px;font-size:.94rem;font-weight:650;color:#46564d}
+.nav-links a:hover{color:var(--green)}
+.connect,.hero-buttons a:first-child{background:var(--green);color:#fff!important;padding:11px 18px;border-radius:999px;box-shadow:0 8px 22px rgba(33,77,58,.18)}
+.menu-btn{display:none;border:0;background:transparent;color:var(--green);cursor:pointer}
+.hero{min-height:100vh;padding:145px 0 80px;display:grid;align-items:center;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--green2);font-weight:800;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font:700 clamp(3.1rem,7vw,5.8rem)/.98 Georgia,serif;color:var(--green);letter-spacing:-.045em}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:650px;margin:25px 0 30px}
+.hero-buttons{display:flex;gap:13px;flex-wrap:wrap}
+.hero-buttons a{display:inline-flex;align-items:center;gap:8px;padding:13px 19px;border-radius:999px;font-weight:750}
+.hero-buttons a:last-child{border:1px solid var(--green);color:var(--green)}
+.hero-card{position:relative;min-height:470px;display:grid;place-items:center}
+.profile{width:min(360px,80vw);height:430px;border-radius:45% 45% 20% 20%;background:linear-gradient(145deg,#dce8dc,#eee2c9);border:10px solid rgba(255,255,255,.7);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;color:var(--green)}
+.profile img{width:100%;height:100%;object-fit:cover;border-radius:38% 38% 16% 16%;display:block}
+.shape{position:absolute;border-radius:50%;background:#d9c28f;opacity:.35}
+.s1{width:90px;height:90px;top:25px;right:5%}.s2{width:140px;height:140px;bottom:15px;left:4%;background:#a9c7b3}.s3{width:28px;height:28px;top:25%;left:3%;background:var(--gold)}
+.grid{display:grid;gap:22px}
+.about-grid{grid-template-columns:1fr 1fr;align-items:center}
+.about-image{min-height:430px;border-radius:var(--radius);background:linear-gradient(145deg,#d8e5d9,#f0dfbf);display:grid;place-items:center;overflow:hidden;color:var(--green);box-shadow:var(--shadow)}.about-image img{width:100%;height:100%;min-height:430px;object-fit:cover;display:block}
+.about-copy h3{font:700 2.1rem Georgia,serif;color:var(--green);margin-bottom:16px}
+.about-copy p{color:var(--muted);margin-bottom:15px}
+.highlights{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:25px}
+.highlight{padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:17px;display:flex;gap:11px;align-items:center;font-weight:700}
+.highlight i{color:var(--gold)}
+.cards-grid{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:27px;box-shadow:0 8px 30px rgba(35,54,44,.045);transition:.25s}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.icon{width:48px;height:48px;border-radius:15px;background:#e6eee5;color:var(--green);display:grid;place-items:center;margin-bottom:18px}
+.card h3{font-size:1.12rem;margin-bottom:8px;color:var(--green)}
+.card p{color:var(--muted);font-size:.94rem}
+.subjects{background:#eef3eb}
+.subject-list{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.subject{padding:12px 18px;background:#fff;border:1px solid var(--line);border-radius:999px;font-weight:700;color:var(--green)}
+.impact{background:var(--green);color:#fff}
+.impact .section-title{color:#fff}.impact .section-description{color:#dbe7df}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stat{text-align:center;padding:28px 12px;border:1px solid rgba(255,255,255,.13);border-radius:22px;background:rgba(255,255,255,.06)}
+.stat strong{font:700 2.7rem Georgia,serif;color:#f1d39d;display:block}.stat span{color:#dbe7df;font-size:.9rem}
+.gallery{grid-template-columns:repeat(3,1fr)}
+.gallery-item{height:250px;border-radius:22px;background:linear-gradient(135deg,#dce7dd,#efe0c1);display:grid;place-items:center;color:var(--green);overflow:hidden;position:relative}
+.gallery-item:nth-child(2n){background:linear-gradient(135deg,#e7dcc7,#d6e5d9)}
+.gallery-item i{width:55px;height:55px}
+.quote{max-width:780px;margin:auto;background:var(--surface);border:1px solid var(--line);padding:35px;border-radius:28px;text-align:center;box-shadow:var(--shadow)}
+.quote i{color:var(--gold);margin-bottom:15px}.quote p{font:italic 1.2rem/1.7 Georgia,serif;color:#405048}.quote small{display:block;margin-top:18px;color:var(--muted);font-weight:700}
+.contact-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:25px}
+.contact-info{background:var(--green);color:#fff;border-radius:var(--radius);padding:35px}
+.contact-info h3{font:700 2rem Georgia,serif;margin-bottom:12px}.contact-info p{color:#dce8df;margin-bottom:25px}
+.contact-detail{display:flex;gap:12px;align-items:center;margin:17px 0;color:#eef5ef}.contact-detail i{color:#e4c381}
+form{background:var(--surface);padding:30px;border:1px solid var(--line);border-radius:var(--radius)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{margin-bottom:15px}.field.full{grid-column:1/-1}
+label{display:block;font-size:.82rem;font-weight:800;color:var(--green);margin-bottom:6px}
+input,textarea{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fffdf9;outline:none;color:var(--text)}
+input:focus,textarea:focus{border-color:var(--green)}textarea{min-height:140px;resize:vertical}
+.submit{border:0;background:var(--green);color:#fff;padding:13px 20px;border-radius:999px;font-weight:800;cursor:pointer}
+.form-message{display:none;margin-top:12px;color:var(--green);font-weight:700}
+footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);text-align:center}
+.reveal{opacity:0;transform:translateY(22px);transition:.7s ease}.reveal.visible{opacity:1;transform:none}
+@media(max-width:850px){.nav-links{display:none;position:absolute;top:74px;left:4%;right:4%;background:var(--surface);padding:18px;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.nav-links .connect{text-align:center}.menu-btn{display:block}.hero-grid,.about-grid,.contact-wrap{grid-template-columns:1fr}.hero{padding-top:120px}.hero-card{min-height:390px}.cards-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.section{padding:72px 0}.hero h1{font-size:3.25rem}.profile{height:360px}.cards-grid,.gallery{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.highlights{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<nav class="nav container">
+<a class="logo" href="#home">Nupur<span class="logo-dot">.</span></a>
+<div class="nav-links" id="navLinks">
+<a href="#home">Home</a><a href="#about">About Me</a><a href="#work">My Work</a><a href="#subjects">Subjects</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a><a class="connect" href="#contact">Let's Connect</a>
+</div>
+<button class="menu-btn" id="menuBtn" aria-label="Open menu"><i data-lucide="menu"></i></button>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="container hero-grid">
+<div class="reveal">
+<div class="eyebrow"><i data-lucide="book-open" width="16"></i> Tutor • Mentor • Educator</div>
+<h1>Learn with confidence. <span>Grow with purpose.</span></h1>
+<p>I’m Nupur, a dedicated tutor helping students understand concepts clearly, build strong foundations, and develop the confidence to succeed.</p>
+<div class="hero-buttons"><a href="#work">Explore My Work <i data-lucide="arrow-right" width="17"></i></a><a href="#contact">Get in Touch</a></div>
+</div>
+<div class="hero-card reveal"><div class="shape s1"></div><div class="shape s2"></div><div class="shape s3"></div><div class="profile"><img src="assets/nupur-profile.jpg" alt="Nupur, tutor" loading="eager"></div></div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="container about-grid">
+<div class="about-image reveal"><img src="assets/nupur-profile.jpg" alt="Nupur" loading="lazy"></div>
+<div class="about-copy reveal"><div class="section-label">About Me</div><h2 class="section-title">A little about <span>my teaching</span></h2>
+<p>I believe every student can learn when lessons are clear, supportive, and adapted to their individual needs. My goal is to make learning less stressful and more rewarding.</p>
+<p>This section is fully editable. Add your education, teaching experience, certifications, teaching philosophy, and the age groups or levels you work with.</p>
+<div class="highlights"><div class="highlight"><i data-lucide="heart-handshake"></i> Student-focused</div><div class="highlight"><i data-lucide="lightbulb"></i> Simple explanations</div><div class="highlight"><i data-lucide="target"></i> Goal-oriented</div><div class="highlight"><i data-lucide="messages-square"></i> Friendly support</div></div>
+</div>
+</div>
+</section>
+
+<section class="section subjects" id="work">
+<div class="container"><div class="section-heading reveal"><div class="section-label">My Work</div><h2 class="section-title">Making learning a <span>difference</span></h2><p class="section-description">Customize these cards with your real tutoring services, teaching methods, or student support areas.</p></div>
+<div class="grid cards-grid">
+<div class="card reveal"><div class="icon"><i data-lucide="book-open"></i></div><h3>One-to-One Tutoring</h3><p>Personalized lessons designed around each student's pace, goals, and learning needs.</p></div>
+<div class="card reveal"><div class="icon"><i data-lucide="users"></i></div><h3>Small Group Classes</h3><p>Interactive sessions that encourage participation, discussion, and collaborative learning.</p></div>
+<div class="card reveal"><div class="icon"><i data-lucide="clipboard-check"></i></div><h3>Exam Preparation</h3><p>Structured revision, practice questions, study planning, and confidence-building support.</p></div>
+<div class="card reveal"><div class="icon"><i data-lucide="brain"></i></div><h3>Concept Building</h3><p>Breaking difficult topics into simple steps so students understand rather than memorize.</p></div>
+<div class="card reveal"><div class="icon"><i data-lucide="laptop"></i></div><h3>Online Learning</h3><p>Flexible online lessons using clear explanations, digital resources, and guided practice.</p></div>
+<div class="card reveal"><div class="icon"><i data-lucide="trending-up"></i></div><h3>Progress Support</h3><p>Regular feedback and practical study strategies to help students improve consistently.</p></div>
+</div></div>
+</section>
+
+<section class="section" id="subjects">
+<div class="container"><div class="section-heading reveal"><div class="section-label">Subjects</div><h2 class="section-title">What I can <span>teach</span></h2><p class="section-description">Replace these examples with your actual subjects, classes, and levels.</p></div>
+<div class="subject-list reveal"><span class="subject">English</span><span class="subject">Mathematics</span><span class="subject">Science</span><span class="subject">Bangla</span><span class="subject">ICT</span><span class="subject">General Studies</span></div></div>
+</section>
+
+<section class="section impact">
+<div class="container"><div class="section-heading reveal"><div class="section-label">My Impact</div><h2 class="section-title">Learning built around <span>progress</span></h2><p class="section-description">These are editable placeholders. Replace them with your real tutoring statistics before publishing.</p></div>
+<div class="stats"><div class="stat reveal"><strong data-count="50">0</strong><span>Students Supported</span></div><div class="stat reveal"><strong data-count="1000">0</strong><span>Lessons</span></div><div class="stat reveal"><strong data-count="5">0</strong><span>Years Experience</span></div><div class="stat reveal"><strong data-count="95">0</strong><span>Progress Goal %</span></div></div></div>
+</section>
+
+<section class="section" id="gallery">
+<div class="container"><div class="section-heading reveal"><div class="section-label">Gallery</div><h2 class="section-title">Learning in <span>action</span></h2><p class="section-description">Replace the placeholders with your own classroom, teaching, certificate, or study-session photos.</p></div>
+<div class="grid gallery"><div class="gallery-item reveal"><i data-lucide="image"></i></div><div class="gallery-item reveal"><i data-lucide="presentation"></i></div><div class="gallery-item reveal"><i data-lucide="graduation-cap"></i></div><div class="gallery-item reveal"><i data-lucide="notebook-pen"></i></div><div class="gallery-item reveal"><i data-lucide="library"></i></div><div class="gallery-item reveal"><i data-lucide="award"></i></div></div></div>
+</section>
+
+<section class="section">
+<div class="container"><div class="section-heading reveal"><div class="section-label">Testimonials</div><h2 class="section-title">Voices of <span>appreciation</span></h2></div>
+<div class="quote reveal"><i data-lucide="quote" width="34"></i><p>“Sample testimonial — replace this with a genuine comment from a student or parent about your teaching.”</p><small>— Student / Parent Name</small></div></div>
+</section>
+
+<section class="section" id="contact">
+<div class="container"><div class="section-heading reveal"><div class="section-label">Contact</div><h2 class="section-title">Let's learn <span>together</span></h2><p class="section-description">Interested in tutoring? Send a message and customize the contact details below.</p></div>
+<div class="contact-wrap">
+<div class="contact-info reveal"><h3>Let's connect.</h3><p>For tutoring inquiries, lesson details, availability, or questions, use the form or update the contact information below.</p>
+<div class="contact-detail"><i data-lucide="mail"></i><span>your-email@example.com</span></div>
+<div class="contact-detail"><i data-lucide="map-pin"></i><span>Your City, Bangladesh</span></div>
+<div class="contact-detail"><i data-lucide="clock-3"></i><span>Available by appointment</span></div></div>
+<form id="contactForm" class="reveal">
+<div class="form-grid"><div class="field"><label for="name">Name</label><input id="name" required placeholder="Your name"></div><div class="field"><label for="email">Email</label><input id="email" type="email" required placeholder="you@example.com"></div><div class="field full"><label for="subject">Subject</label><input id="subject" required placeholder="Tutoring inquiry"></div><div class="field full"><label for="message">Message</label><textarea id="message" required placeholder="Tell me what you would like help with..."></textarea></div></div>
+<button class="submit" type="submit">Send Message <i data-lucide="send" width="16"></i></button><div class="form-message" id="formMessage">Your message is ready. Connect this form to an email/backend service to receive submissions.</div>
+</form></div></div>
+</section>
+</main>
+
+<footer><div class="container"><strong>Nupur — Tutor & Educator</strong><br><span>Helping students learn with confidence.</span><div style="margin-top:10px;font-size:.8rem">© <span id="year"></span> Nupur. All rights reserved. <a href="0" style="margin-left:8px;color:var(--green);font-weight:700">.</a></div></div></footer>
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBCfZ0B4bVEE9-avnxBKnGK5h9_Oyfa76Y",
+  authDomain: "nupur-portfolio.firebaseapp.com",
+  projectId: "nupur-portfolio",
+  storageBucket: "nupur-portfolio.firebasestorage.app",
+  messagingSenderId: "209988774465",
+  appId: "1:209988774465:web:67ef26f48d24f78994f4c0"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.nupurFirebase = { db, collection, addDoc, serverTimestamp };
+
+const defaultSiteData = {
+  brandName: "Nupur",
+  roleLine: "Tutor • Mentor • Educator",
+  heroTitle: "Learn with confidence.",
+  heroHighlight: "Grow with purpose.",
+  heroText: "I’m Nupur, a dedicated tutor helping students understand concepts clearly, build strong foundations, and develop the confidence to succeed.",
+  aboutTitle: "A little about my teaching",
+  aboutText1: "I believe every student can learn when lessons are clear, supportive, and adapted to their individual needs. My goal is to make learning less stressful and more rewarding.",
+  aboutText2: "This section is fully editable. Add your education, teaching experience, certifications, teaching philosophy, and the age groups or levels you work with.",
+  email: "your-email@example.com",
+  location: "Your City, Bangladesh",
+  availability: "Available by appointment",
+  subjects: ["English","Mathematics","Science","Bangla","ICT","General Studies"],
+  stats: [
+    {value:"50", label:"Students Supported"},
+    {value:"1000", label:"Lessons"},
+    {value:"5", label:"Years Experience"},
+    {value:"95", label:"Progress Goal %"}
+  ],
+  services: [
+    {icon:"book-open", title:"One-to-One Tutoring", text:"Personalized lessons designed around each student's pace, goals, and learning needs."},
+    {icon:"users", title:"Small Group Classes", text:"Interactive sessions that encourage participation, discussion, and collaborative learning."},
+    {icon:"clipboard-check", title:"Exam Preparation", text:"Structured revision, practice questions, study planning, and confidence-building support."},
+    {icon:"brain", title:"Concept Building", text:"Breaking difficult topics into simple steps so students understand rather than memorize."},
+    {icon:"laptop", title:"Online Learning", text:"Flexible online lessons using clear explanations, digital resources, and guided practice."},
+    {icon:"trending-up", title:"Progress Support", text:"Regular feedback and practical study strategies to help students improve consistently."}
+  ],
+  testimonial: "“Sample testimonial — replace this with a genuine comment from a student or parent about your teaching.”",
+  testimonialAuthor: "Student / Parent Name",
+  gallery: [
+    {image:"", alt:"Teaching photo 1"},
+    {image:"", alt:"Teaching photo 2"},
+    {image:"", alt:"Teaching photo 3"},
+    {image:"", alt:"Teaching photo 4"},
+    {image:"", alt:"Teaching photo 5"},
+    {image:"", alt:"Teaching photo 6"}
+  ],
+  profileImage: "assets/nupur-profile.jpg",
+  aboutImage: "assets/nupur-profile.jpg"
+};
+
+async function loadSiteData() {
+  try {
+    const snap = await getDoc(doc(db, "siteContent", "main"));
+    if (!snap.exists()) return defaultSiteData;
+    return { ...defaultSiteData, ...snap.data() };
+  } catch (error) {
+    console.warn("Using default site content:", error);
+    return defaultSiteData;
+  }
+}
+
+function safeText(v){ return typeof v === "string" ? v : ""; }
+
+async function applySiteData(data) {
+  document.querySelector(".logo").innerHTML = `${safeText(data.brandName)}<span class="logo-dot">.</span>`;
+  document.title = `${safeText(data.brandName)} | Tutor Portfolio`;
+  const eyebrow = document.querySelector(".eyebrow");
+  if (eyebrow) eyebrow.innerHTML = `<i data-lucide="book-open" width="16"></i> ${safeText(data.roleLine)}`;
+  const heroH1 = document.querySelector(".hero h1");
+  if (heroH1) heroH1.innerHTML = `${safeText(data.heroTitle)} <span>${safeText(data.heroHighlight)}</span>`;
+  const heroP = document.querySelector(".hero p");
+  if (heroP) heroP.textContent = safeText(data.heroText);
+
+  const aboutH2 = document.querySelector(".about-copy .section-title");
+  if (aboutH2) aboutH2.innerHTML = safeText(data.aboutTitle).replace(/\b(my teaching|teaching)\b/i, '<span>$1</span>');
+  const aboutPs = document.querySelectorAll(".about-copy > p");
+  if (aboutPs[0]) aboutPs[0].textContent = safeText(data.aboutText1);
+  if (aboutPs[1]) aboutPs[1].textContent = safeText(data.aboutText2);
+
+  const contactDetails = document.querySelectorAll(".contact-detail span");
+  if (contactDetails[0]) contactDetails[0].textContent = safeText(data.email);
+  if (contactDetails[1]) contactDetails[1].textContent = safeText(data.location);
+  if (contactDetails[2]) contactDetails[2].textContent = safeText(data.availability);
+
+  const serviceCards = document.querySelectorAll("#work .card");
+  (data.services || []).forEach((s,i)=>{
+    if(!serviceCards[i]) return;
+    const icon=serviceCards[i].querySelector(".icon");
+    if(icon) icon.innerHTML=`<i data-lucide="${safeText(s.icon)||"book-open"}"></i>`;
+    const h=serviceCards[i].querySelector("h3"); if(h) h.textContent=safeText(s.title);
+    const p=serviceCards[i].querySelector("p"); if(p) p.textContent=safeText(s.text);
+  });
+
+  const subjectList = document.querySelector(".subject-list");
+  if(subjectList) subjectList.innerHTML=(data.subjects||[]).map(s=>`<span class="subject">${safeText(s)}</span>`).join("");
+
+  const stats = document.querySelectorAll(".stat");
+  (data.stats||[]).forEach((s,i)=>{
+    if(!stats[i]) return;
+    const strong=stats[i].querySelector("strong"); const span=stats[i].querySelector("span");
+    if(strong){strong.dataset.count=safeText(s.value);strong.textContent="0";}
+    if(span) span.textContent=safeText(s.label);
+  });
+
+  const quote=document.querySelector(".quote p"); if(quote) quote.textContent=safeText(data.testimonial);
+  const author=document.querySelector(".quote small"); if(author) author.textContent=`— ${safeText(data.testimonialAuthor)}`;
+
+  const profile=document.querySelector(".profile img"); if(profile && data.profileImage) profile.src=safeText(data.profileImage);
+  const aboutImg=document.querySelector(".about-image img"); if(aboutImg && data.aboutImage) aboutImg.src=safeText(data.aboutImage);
+
+  const gallery=document.querySelectorAll(".gallery-item");
+  (data.gallery||[]).forEach((g,i)=>{
+    if(!gallery[i]) return;
+    if(g.image){
+      gallery[i].style.backgroundImage=`url("${String(g.image).replace(/"/g,'&quot;')}")`;
+      gallery[i].style.backgroundSize="cover";
+      gallery[i].style.backgroundPosition="center";
+      gallery[i].innerHTML="";
+      gallery[i].setAttribute("aria-label", safeText(g.alt));
+    }
+  });
+  lucide.createIcons();
+}
+loadSiteData().then(applySiteData);
+</script>
+
+<script>
+lucide.createIcons();
+const menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('navLinks');
+menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
+reveals.forEach(el=>observer.observe(el));
+
+const counters=document.querySelectorAll('[data-count]');
+const counterObserver=new IntersectionObserver(entries=>entries.forEach(e=>{
+ if(!e.isIntersecting)return;
+ const el=e.target,target=+el.dataset.count;let start=0;const duration=1100;
+ const tick=()=>{start+=Math.max(1,Math.ceil(target/45));if(start>=target){el.textContent=target;return}el.textContent=start;requestAnimationFrame(tick)};tick();counterObserver.unobserve(el);
+}),{threshold:.5});
+counters.forEach(c=>counterObserver.observe(c));
+
+document.getElementById('contactForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const form=e.target;
+ if(!form.checkValidity()){form.reportValidity();return}
+ const button=form.querySelector('.submit');
+ const message=document.getElementById('formMessage');
+ const original=button.innerHTML;
+ button.disabled=true;
+ button.innerHTML='Sending...';
+ message.style.display='none';
+ try{
+   const {db,collection,addDoc,serverTimestamp}=window.nupurFirebase;
+   await addDoc(collection(db,'contactMessages'),{
+     name:document.getElementById('name').value.trim(),
+     email:document.getElementById('email').value.trim(),
+     subject:document.getElementById('subject').value.trim(),
+     message:document.getElementById('message').value.trim(),
+     createdAt:serverTimestamp()
+   });
+   message.textContent='Thank you! Your request has been received. Nupur will review it and contact you soon.';
+   message.style.display='block';
+   form.reset();
+ }catch(error){
+   console.error(error);
+   message.textContent='Could not send the message. Please check your Firebase Firestore setup and try again.';
+   message.style.display='block';
+ }finally{
+   button.disabled=false;
+   button.innerHTML=original;
+ }
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
